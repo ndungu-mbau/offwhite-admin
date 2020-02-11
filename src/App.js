@@ -1,26 +1,24 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
+
+import dash from "./pages/dashboard"
+import maintenance from "./pages/line-maintenance"
+import planning from "./pages/line-planning"
+import pirep from "./pages/pirep"
+import records from "./pages/technical-records"
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Router>
+      <Switch>
+        <Route path="/" exact component={dash} />
+        <Route path="/pirep" component={pirep} />
+        <Route path="/line-planning" component={planning} />
+        <Route path="/line-maintenance" component={maintenance} />
+        <Route path="/records" component={records} />
+      </Switch>
+    </Router>
+  )
 }
 
 export default App;
