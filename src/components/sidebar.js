@@ -68,7 +68,7 @@ export default ({ location : { pathname = "/" } = {} }) => {
           </li>
           <li className="nav-item">
             {canView && <Link className={`nav-link ${pathname.startsWith("/records") && "active"}`} to="/records">
-              <i className="fas fa-radiation-alt text-orange"></i> Technical Records
+              <i className="ni ni-books text-orange"></i> Technical Records
             </Link>}
           </li>
         </ul>
