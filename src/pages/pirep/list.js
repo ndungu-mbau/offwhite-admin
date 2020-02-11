@@ -1,16 +1,7 @@
 import React from "react"
 
 import Table from "../../components/datatable"
-
-const data = [{
-  id: 1,
-  reg_no: "ABC1230",
-  defects: [1,2,3]
-}, {
-  id: 2,
-  reg_no: "ABC4560",
-  defects: [2,3,4]
-}]
+import data from "../../utils/data.json"
 
 const List = props => {
   return (
@@ -31,7 +22,7 @@ const List = props => {
             <div className="card-body">
               <Table
                 className="table-borderless"
-                data={data}
+                data={data.pirep}
                 options={{
                   deleteable: false,
                   editable: false,
