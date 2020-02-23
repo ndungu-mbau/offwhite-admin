@@ -2,14 +2,6 @@ import React from "react"
 import { Link } from "react-router-dom"
 
 export default ({ location : { pathname = "/" } = {} }) => {
-  
-  const { canView } = {
-    get canView(){
-      const { type } = JSON.parse(localStorage.getItem("user"))
-      return type === "SYSADMIN"
-    }
-  }
-
   return (
     <nav className="navbar navbar-vertical fixed-left navbar-expand-lg navbar-light bg-white" id="sidenav-main">
     <div className="container-fluid">
@@ -52,24 +44,24 @@ export default ({ location : { pathname = "/" } = {} }) => {
             </Link>
           </li>
           <li className="nav-item">
-            {canView && <Link className={`nav-link ${pathname.startsWith("/pirep") && "active"}`} to="/pirep">
+            <Link className={`nav-link ${pathname.startsWith("/pirep") && "active"}`} to="/pirep">
               <i className="ni ni-single-02 text-yellow"></i> Pilot Report
-            </Link>}
+            </Link>
           </li>
           <li className="nav-item">
-            {canView && <Link className={`nav-link ${pathname.startsWith("/line-planning") && "active"}`}to="/line-planning">
+            <Link className={`nav-link ${pathname.startsWith("/line-planning") && "active"}`}to="/line-planning">
               <i className="ni ni-collection text-green"></i> Line Planning
-            </Link>}
+            </Link>
           </li>
           <li className="nav-item">
-            {canView && <Link className={`nav-link ${pathname.startsWith("/line-maintenance") && "active"}`} to="/line-maintenance">
+            <Link className={`nav-link ${pathname.startsWith("/line-maintenance") && "active"}`} to="/line-maintenance">
               <i className="ni ni-tag text-info"></i> Line Maintenance
-            </Link>}
+            </Link>
           </li>
           <li className="nav-item">
-            {canView && <Link className={`nav-link ${pathname.startsWith("/records") && "active"}`} to="/records">
+            <Link className={`nav-link ${pathname.startsWith("/records") && "active"}`} to="/records">
               <i className="ni ni-books text-orange"></i> Technical Records
-            </Link>}
+            </Link>
           </li>
         </ul>
       </div>

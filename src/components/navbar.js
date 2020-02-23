@@ -3,7 +3,6 @@ import { Link, useHistory } from "react-router-dom"
 
 const Navbar = props => {
   const history = useHistory()
-  const { name } = JSON.parse(localStorage.getItem("user"))
 
   const onClick = e => {
     e.preventDefault()
@@ -24,7 +23,7 @@ const Navbar = props => {
                   <img alt="" src="./assets/img/theme/team-4-800x800.jpg" />
                 </span>
                 <div className="media-body ml-2 d-none d-lg-block">
-                  <span className="mb-0 text-sm  font-weight-bold">{name}</span>
+                  <span className="mb-0 text-sm  font-weight-bold">User</span>
                 </div>
               </div>
             </a>
