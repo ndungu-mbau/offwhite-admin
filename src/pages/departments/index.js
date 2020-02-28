@@ -1,8 +1,9 @@
 import React from 'react'
+import { Switch, Route } from "react-router-dom"
 import Navbar from "../../components/navbar"
 import Sidebar from "../../components/sidebar"
-import Footer from "../../components/footer"
-import List from "./list"
+import list from "./list"
+import view from "./view"
 
 const Index = ({ location }) => {
   return (
@@ -10,8 +11,10 @@ const Index = ({ location }) => {
       <Sidebar location={location}/>
       <div className="main-content">
         <Navbar/>
-        <List />
-        <Footer />
+        <Switch>
+          <Route path="/departments" exact component={list} />
+          <Route path="/departments/:id" component={view} />
+        </Switch>
       </div>
     </>
   )

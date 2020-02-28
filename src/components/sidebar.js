@@ -38,29 +38,19 @@ export default ({ location : { pathname = "/" } = {} }) => {
           </div>
         </form>
         <ul className="navbar-nav">
-          <li className="nav-item">
+        <li className="nav-item">
             <Link className={`nav-link ${pathname === "/" && "active"}`} to="/">
               <i className="ni ni-tv-2 text-primary"></i> Dashboard
             </Link>
           </li>
           <li className="nav-item">
-            <Link className={`nav-link ${pathname.startsWith("/pirep") && "active"}`} to="/pirep">
-              <i className="ni ni-single-02 text-yellow"></i> Pilot Report
+            <Link className={`nav-link ${pathname.startsWith("/users") && "active"}`} to="/users">
+              <i className="ni ni-single-02 text-yellow"></i> Users
             </Link>
           </li>
           <li className="nav-item">
-            <Link className={`nav-link ${pathname.startsWith("/line-planning") && "active"}`}to="/line-planning">
-              <i className="ni ni-collection text-green"></i> Line Planning
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link className={`nav-link ${pathname.startsWith("/line-maintenance") && "active"}`} to="/line-maintenance">
-              <i className="ni ni-tag text-info"></i> Line Maintenance
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link className={`nav-link ${pathname.startsWith("/records") && "active"}`} to="/records">
-              <i className="ni ni-books text-orange"></i> Technical Records
+            <Link className={`nav-link ${pathname.startsWith("/departments") && "active"}`}to="/departments">
+              <i className="ni ni-building text-danger"></i> Departments
             </Link>
           </li>
         </ul>

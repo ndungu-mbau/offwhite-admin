@@ -1,23 +1,36 @@
 import React from 'react';
-import { HashRouter as Router, Switch, Route } from "react-router-dom"
+import { HashRouter as Router, Switch, Route, Redirect } from "react-router-dom"
+import { ApolloProvider } from "@apollo/react-hooks"
+import client from "./utils/client"
 
-import dash from "./pages/dashboard"
-import maintenance from "./pages/line-maintenance"
-import planning from "./pages/line-planning"
-import pirep from "./pages/pirep"
-import records from "./pages/technical-records"
+import departments from "./pages/departments"
+import users from "./pages/users"
+
+import login from "./pages/login"
+import reset from "./pages/reset"
+import verify from "./pages/verify"
+
+const PrivateRoute = ({ component: Component, ...rest }) => (
+  <Route {...rest} render={(props) => (
+    localStorage.getItem('authorization')
+      ? <Component {...props} />
+      : <Redirect to='/login' />
+  )} />
+)
 
 function App() {
   return (
-    <Router>
-      <Switch>
-        <Route path="/" exact component={dash} />
-        <Route path="/pirep" component={pirep} />
-        <Route path="/line-planning" component={planning} />
-        <Route path="/line-maintenance" component={maintenance} />
-        <Route path="/records" component={records} />
-      </Switch>
-    </Router>
+    <ApolloProvider client={client}>
+      <Router>
+        <Switch>
+          <PrivateRoute path="/departments" component={departments} />
+          <PrivateRoute path="/users" component={users} />
+          <Route path="/login" component={login} />
+          <Route path="/reset" component={reset} />
+          <Route path="/verify" component={verify} />
+        </Switch>
+      </Router>
+    </ApolloProvider>
   )
 }
 
