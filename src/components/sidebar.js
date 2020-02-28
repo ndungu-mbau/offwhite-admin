@@ -53,6 +53,11 @@ export default ({ location : { pathname = "/" } = {} }) => {
               <i className="ni ni-building text-danger"></i> Departments
             </Link>
           </li>
+          <li className="nav-item">
+            <Link className={`nav-link ${pathname.startsWith("/airplanes") && "active"}`}to="/airplanes">
+              <i className="fas fa-plane-departure text-purple"></i> Airplanes
+            </Link>
+          </li>
         </ul>
       </div>
     </div>

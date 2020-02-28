@@ -5,6 +5,7 @@ import client from "./utils/client"
 
 import departments from "./pages/departments"
 import users from "./pages/users"
+import airplanes from "./pages/airplanes"
 
 import login from "./pages/login"
 import reset from "./pages/reset"
@@ -25,6 +26,7 @@ function App() {
         <Switch>
           <PrivateRoute path="/departments" component={departments} />
           <PrivateRoute path="/users" component={users} />
+          <PrivateRoute path="/airplanes" component={airplanes} />
           <Route path="/login" component={login} />
           <Route path="/reset" component={reset} />
           <Route path="/verify" component={verify} />
