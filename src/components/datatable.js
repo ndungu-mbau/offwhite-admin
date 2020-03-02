@@ -22,6 +22,7 @@ const DataTable = props => {
           return (
             <tr key={row.id}>
               {props.headers.map(header => {
+                if(header.view) return header.view(row)
                 return <td key={Math.random().toString()}>{transverseNested(row, header.key)}</td>;
               })}
               <td
