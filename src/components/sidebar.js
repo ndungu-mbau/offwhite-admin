@@ -63,6 +63,11 @@ export default ({ location : { pathname = "/" } = {} }) => {
               <i className="fas fa-dumpster-fire text-danger"></i> Defects
             </Link>
           </li>
+          <li className="nav-item">
+            <Link className={`nav-link ${pathname.startsWith("/rotables") && "active"}`}to="/rotables">
+              <i className="fas fa-cogs text-success"></i> Rotables
+            </Link>
+          </li>
         </ul>
       </div>
     </div>
