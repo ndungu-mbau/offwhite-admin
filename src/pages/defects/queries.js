@@ -35,6 +35,10 @@ export const DATA_QUERY = gql`
     name
     type
   }
+  manuals{
+    id
+    name
+  }
 }`
 
 export const DEFECT_QUERY = gql`
@@ -50,6 +54,11 @@ query($defect: Udefect!){
 			reg_no
 		}
 		description
+    full_description
+    manual{
+      id
+      name
+    }
 		status{
 			id
 			type
