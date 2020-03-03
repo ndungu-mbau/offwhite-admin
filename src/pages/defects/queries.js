@@ -23,6 +23,20 @@ export const DEFECTS_QUERY = gql`{
 	}
 }`;
 
+export const DATA_QUERY = gql`
+{
+  airplanes{
+    id
+    fleet
+    reg_no
+  }
+  users{
+    id
+    name
+    type
+  }
+}`
+
 export const DEFECT_QUERY = gql`
 query($defect: Udefect!){
 	defect(defect: $defect){
@@ -47,24 +61,10 @@ query($defect: Udefect!){
 	}
 }`;
 
-export const DATA_QUERY = gql`
-{
-  airplanes{
-    id
-    fleet
-    reg_no
-  }
-  users{
-    id
-    name
-    type
-  }
-}`
-
-export const CREATE_DEFECT = gql`
-  mutation($defect: Idefect!){
-    defects{
-      create(defect: $defect){
+export const CREATE_MANUAL = gql`
+  mutation($manual: Imanual!){
+    manuals{
+      create(manual: $manual){
         id
       }
     }
@@ -81,10 +81,30 @@ export const UPDATE_DEFECT = gql`
   }
 `
 
+export const UPDATE_STATUS = gql`
+  mutation($status: Ustatus!){
+    statuses{
+      update(status: $status){
+        id
+      }
+    }
+  }
+`
+
 export const DELETE_DEFECT = gql`
   mutation($defect: Udefect!){
     defects{
       archive(defect: $defect){
+        id
+      }
+    }
+  }
+`
+
+export const CREATE_DEFECT = gql`
+  mutation($defect: Idefect!){
+    defects{
+      create(defect: $defect){
         id
       }
     }

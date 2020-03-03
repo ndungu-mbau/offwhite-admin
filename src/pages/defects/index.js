@@ -3,7 +3,7 @@ import { Switch, Route } from "react-router-dom"
 import Navbar from "../../components/navbar"
 import Sidebar from "../../components/sidebar"
 import list from "./list"
-// import view from "./view"
+import view from "./view"
 
 const Index = ({ location }) => {
   return (
@@ -13,6 +13,7 @@ const Index = ({ location }) => {
         <Navbar/>
         <Switch>
           <Route path="/defects" exact component={list} />
+          <Route path="/defects/:id" component={view} />
         </Switch>
       </div>
     </>
