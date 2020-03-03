@@ -1,7 +1,8 @@
 import React from 'react';
-import { HashRouter as Router, Switch, Route, Redirect } from "react-router-dom"
+import { HashRouter as Router, Switch, Route } from "react-router-dom"
 import { ApolloProvider } from "@apollo/react-hooks"
 import client from "./utils/client"
+import { PrivateRoute } from "./components/routes"
 
 import departments from "./pages/departments"
 import users from "./pages/users"
@@ -13,14 +14,6 @@ import manuals from "./pages/manuals"
 import login from "./pages/login"
 import reset from "./pages/reset"
 import verify from "./pages/verify"
-
-const PrivateRoute = ({ component: Component, ...rest }) => (
-  <Route {...rest} render={(props) => (
-    localStorage.getItem('authorization')
-      ? <Component {...props} />
-      : <Redirect to='/login' />
-  )} />
-)
 
 function App() {
   return (
