@@ -8,6 +8,7 @@ import users from "./pages/users"
 import airplanes from "./pages/airplanes"
 import defects from "./pages/defects"
 import rotables from "./pages/rotables"
+import manuals from "./pages/manuals"
 
 import login from "./pages/login"
 import reset from "./pages/reset"
@@ -31,6 +32,7 @@ function App() {
           <PrivateRoute path="/airplanes" component={airplanes} />
           <PrivateRoute path="/defects" component={defects} />
           <PrivateRoute path="/rotables" component={rotables} />
+          <PrivateRoute path="/manuals" component={manuals} />
           <Route path="/login" component={login} />
           <Route path="/reset" component={reset} />
           <Route path="/verify" component={verify} />
