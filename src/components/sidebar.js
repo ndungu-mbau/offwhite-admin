@@ -60,7 +60,7 @@ export default ({ location : { pathname = "/" } = {} }) => {
           </li>
           <li className="nav-item">
             <Link className={`nav-link ${pathname.startsWith("/manuals") && "active"}`}to="/manuals">
-              <i className="fas fa-dumpster-fire text-info"></i> Manuals
+              <i className="ni ni-books text-info"></i> Manuals
             </Link>
           </li>
           <li className="nav-item">
