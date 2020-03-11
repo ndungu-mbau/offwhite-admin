@@ -1,9 +1,10 @@
 import React from 'react';
-import { HashRouter as Router, Switch, Route, Redirect } from "react-router-dom"
+import { HashRouter as Router, Switch, Route } from "react-router-dom"
 import { ApolloProvider } from "@apollo/react-hooks"
 import client from "./utils/client"
 import { PrivateRoute } from "./components/routes"
 
+import dashboard from "./pages/dashboard"
 import departments from "./pages/departments"
 import users from "./pages/users"
 import airplanes from "./pages/airplanes"
@@ -21,7 +22,7 @@ function App() {
     <ApolloProvider client={client}>
       <Router>
         <Switch>
-          <PrivateRoute path="/" exact component={props => <Redirect to="/defects" {...props} />} />
+          <PrivateRoute path="/" exact component={dashboard} />
           <PrivateRoute path="/departments" component={departments} />
           <PrivateRoute path="/users" component={users} />
           <PrivateRoute path="/airplanes" component={airplanes} />

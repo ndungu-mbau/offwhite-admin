@@ -44,6 +44,16 @@ export default ({ location : { pathname = "/" } = {} }) => {
             </Link>
           </li>
           <li className="nav-item">
+            <Link className={`nav-link ${pathname.startsWith("/defects") && "active"}`}to="/defects">
+              <i className="fas fa-dumpster-fire text-danger"></i> Defects
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link className={`nav-link ${pathname.startsWith("/maintenance") && "active"}`}to="/maintenance">
+              <i className="fas fa-dumpster-fire text-danger"></i> Line Maintenance
+            </Link>
+          </li>
+          <li className="nav-item">
             <Link className={`nav-link ${pathname.startsWith("/users") && "active"}`} to="/users">
               <i className="ni ni-single-02 text-yellow"></i> Users
             </Link>
@@ -66,16 +76,6 @@ export default ({ location : { pathname = "/" } = {} }) => {
           <li className="nav-item">
             <Link className={`nav-link ${pathname.startsWith("/rotables") && "active"}`}to="/rotables">
               <i className="fas fa-cogs text-success"></i> Rotables
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link className={`nav-link ${pathname.startsWith("/defects") && "active"}`}to="/defects">
-              <i className="fas fa-dumpster-fire text-danger"></i> Defects
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link className={`nav-link ${pathname.startsWith("/maintenance") && "active"}`}to="/maintenance">
-              <i className="fas fa-dumpster-fire text-danger"></i> Line Maintenance
             </Link>
           </li>
         </ul>
