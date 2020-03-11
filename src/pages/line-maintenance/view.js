@@ -1,7 +1,8 @@
-import React, { useState } from "react"
+import React, { useState, useRef } from "react"
+import JoditEditor from "jodit-react"
 import { useParams, useHistory } from "react-router-dom"
 import { useQuery, useMutation } from '@apollo/react-hooks';
-import { DEFECT_QUERY, UPDATE_STATUS, DELETE_DEFECT } from "./queries"
+import { DEFECT_QUERY, UPDATE_DEFECT, UPDATE_STATUS, DELETE_DEFECT } from "./queries"
 
 import Loader from "../../components/loader"
 
@@ -24,9 +25,12 @@ const List = props => {
 
   const [removeDefect, { error: mutationError }] = useMutation(DELETE_DEFECT)
   const [updateStatus] = useMutation(UPDATE_STATUS)
+  const [updateDefect] = useMutation(UPDATE_DEFECT)
 
   const [remove, setRemove] = useState({})
   const [manual, setManual] = useState({})
+  const [maintenance_description, setMaintenanceDscription] = useState(data?.defect?.full_description)
+  const editor = useRef(null)
 
   const saveRemove = async ({ id }) => {
     await removeDefect({ variables: { defect: { id }}})
@@ -41,8 +45,12 @@ const List = props => {
         type: "COMPLETE"
       }
     }})
+    const defect_res = await updateDefect({ variables: { defect: {
+      id,
+      maintenance_description
+    }}})
 
-    console.log({ status_res })
+    console.log({ status_res, defect_res })
     history.goBack()
   }
 
@@ -58,7 +66,8 @@ const List = props => {
   }
 
   return (
-    <div className="container-fluid pb-8 pt-8 pt-md-12">
+  <>
+    <div className="container-fluid pt-8 pt-md-12">
       <DeleteModal remove={remove} save={saveRemove} />
       <ViewManualModal manual={manual} />
       <div className="row">
@@ -154,20 +163,56 @@ const List = props => {
                 <div className="card-body" dangerouslySetInnerHTML={{ __html: data.defect.full_description }}></div>
               </div>
             </div>
-          </div>
-          {type === "LINE_MAINTENANCE" || type === "SYSADMIN" ? <div className="card-footer">
-            <div className="row d-flex flex-row-reverse">
-              <div className="col-3">
-                <button className="btn btn-icon btn-success btn-lg" type="button" onClick={saveUpdate}>
-                  <span className="btn-inner--icon"><i className="ni ni-check-bold"></i></span>
-                  <span className="btn-inner--text">Mark Complete</span>
-                  </button>
+            <div className="row mt-5">
+              <div className="col">
+                <div className="card">
+                  <div className="card-header">
+                    <h4 className="card-title">Line Maintenance Description</h4>
+                  </div>
+                </div>
+                <div className="card-body" dangerouslySetInnerHTML={{ __html: data.defect.maintenance_description }}></div>
               </div>
             </div>
-          </div>: null}
+          </div>
         </div>
       </div>
     </div>
+    {(type === "LINE_MAINTENANCE" || type === "SYSADMIN") && data.defect.status.type !== "COMPLETE" ? <div className="container-fluid pt-4">
+      <div className="row">
+        <div className="col-12">
+          <div className="card shadow">
+            <div className="card-header">
+              <h4 className="card-title">Create Line Maintenance Report</h4>
+            </div>
+            <div className="card-body">
+              <div className="row">
+                <div className="col-12">
+                  <JoditEditor
+                    ref={editor}
+                    value={maintenance_description}
+                    config={{ readonly: false }}
+                    tabIndex={1}
+                    onBlur={newContent => setMaintenanceDscription(newContent)}
+                    onChange={newContent => {}}
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="card-footer">
+              <div className="row d-flex flex-row-reverse">
+                <div className="col-3">
+                  <button className="btn btn-icon btn-success btn-lg" type="button" onClick={saveUpdate}>
+                    <span className="btn-inner--icon"><i className="ni ni-check-bold"></i></span>
+                    <span className="btn-inner--text">Mark Complete</span>
+                    </button>
+                </div>
+              </div>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>: null}
+  </>
   )
 }
 

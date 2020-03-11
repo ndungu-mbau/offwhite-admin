@@ -78,7 +78,7 @@ const List = props => {
                 className="table-borderless"
                 data={defectsData.defects}
                 options={{
-                  deleteable: true,
+                  deleteable: type === "SYSADMIN",
                   editable: true,
                   viewable: type === "LINE_PLANNING" || type === "SYSADMIN"
                 }}

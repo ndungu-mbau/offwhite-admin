@@ -55,6 +55,7 @@ query($defect: Udefect!){
 		}
 		description
     full_description
+    maintenance_description
     manual{
       id
       name

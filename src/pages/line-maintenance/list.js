@@ -49,9 +49,9 @@ const List = props => {
             <div className="card-body">
               <Table
                 className="table-borderless"
-                data={defectsData.defects}
+                data={defectsData.defects.filter(defect => defect.status.type !== "NEW")}
                 options={{
-                  deleteable: true,
+                  deleteable: type === "SYSADMIN",
                   editable: false,
                   viewable: type === "LINE_MAINTENANCE" || type === "SYSADMIN"
                 }}

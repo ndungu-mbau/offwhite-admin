@@ -160,7 +160,7 @@ const List = props => {
           </div>
         </div>
       </div>
-      <div className="row mt-5">
+      {data.defect.manual === null ? <div className="row mt-5">
         <div className="col-12 card shadow">
           <div className="card-header">
             <h2 className="card-title">Create Technical Defect Details</h2>
@@ -203,12 +203,12 @@ const List = props => {
                 <button className="btn btn-icon btn-success btn-lg" type="button" onClick={saveUpdate}>
                   <span className="btn-inner--icon"><i className="ni ni-check-bold"></i></span>
                   <span className="btn-inner--text">Create Record</span>
-                  </button>
+                </button>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </div>: null}
     </div>
   )
 }
