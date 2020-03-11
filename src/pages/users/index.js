@@ -3,6 +3,7 @@ import { Switch, Route } from "react-router-dom"
 
 import Navbar from "../../components/navbar"
 import Sidebar from "../../components/sidebar"
+import Footer from "../../components/footer"
 import list from "./list"
 import single from "./view"
 
@@ -16,6 +17,7 @@ const Index = ({ location }) => {
           <Route path="/users" exact component={list} />
           <Route path="/users/:id" component={single} />
         </Switch>
+        <Footer/>
       </div>
     </>
   )

@@ -4,6 +4,7 @@ import { createProtectedRoute } from "../../components/routes"
 
 import Navbar from "../../components/navbar"
 import Sidebar from "../../components/sidebar"
+import Footer from "../../components/footer"
 import list from "./list"
 import view from "./view"
 
@@ -19,6 +20,7 @@ const Index = ({ location }) => {
           <ProtectedRoute path="/maintenance" exact component={list} />
           <ProtectedRoute path="/maintenance/:id" component={view} />
         </Switch>
+        <Footer />
       </div>
     </>
   )
