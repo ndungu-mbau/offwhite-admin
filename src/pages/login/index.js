@@ -20,7 +20,7 @@ const Login = props => {
       window.localStorage.setItem('authorization', token)
       window.localStorage.setItem("user", JSON.stringify(user))
       setLoading(false)
-      return props.history.push({ pathname: '/users' })
+      return props.history.push({ pathname: '/' })
     } else {
       window.Swal.fire({
         icon:'error',

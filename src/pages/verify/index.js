@@ -15,7 +15,7 @@ const Reset = props => {
 
     if(ok){
       window.localStorage.setItem("authorization", token)
-      return props.history.push({ pathname: '/users' })
+      return props.history.push({ pathname: '/' })
     } else {
       window.Swal.fire({
         icon:'error',
