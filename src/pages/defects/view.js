@@ -192,7 +192,7 @@ const List = props => {
                   config={{ readonly: false }}
 		              tabIndex={1}
 		              onBlur={newContent => setFullDscription(newContent)}
-                  onChange={newContent => {}}
+                  onChange={newContent => setFullDscription(newContent)}
                 />
               </div>
             </div>
