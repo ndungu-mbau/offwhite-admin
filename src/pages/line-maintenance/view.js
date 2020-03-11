@@ -20,7 +20,8 @@ const List = props => {
       defect:{
         id
       }
-    }
+    },
+    fetchPolicy: "network-only"
   })
 
   const [removeDefect, { error: mutationError }] = useMutation(DELETE_DEFECT)

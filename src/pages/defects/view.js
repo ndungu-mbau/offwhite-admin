@@ -50,6 +50,7 @@ const List = props => {
     }})
 
     console.log({ defect_res, status_res })
+    history.goBack()
   }
 
   const error = queryError || mutationError
