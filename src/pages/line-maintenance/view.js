@@ -6,7 +6,9 @@ import { DEFECT_QUERY, UPDATE_STATUS, DELETE_DEFECT } from "./queries"
 import Loader from "../../components/loader"
 
 import DeleteModal from "../../components/delete"
+import ViewManualModal from "./manual"
 const deleteModalInstance = new DeleteModal()
+const viewManualModalInstance = new ViewManualModal()
 
 const List = props => {
   const { id } = useParams()
@@ -24,6 +26,7 @@ const List = props => {
   const [updateStatus] = useMutation(UPDATE_STATUS)
 
   const [remove, setRemove] = useState({})
+  const [manual, setManual] = useState({})
 
   const saveRemove = async ({ id }) => {
     await removeDefect({ variables: { defect: { id }}})
@@ -57,6 +60,7 @@ const List = props => {
   return (
     <div className="container-fluid pb-8 pt-8 pt-md-12">
       <DeleteModal remove={remove} save={saveRemove} />
+      <ViewManualModal manual={manual} />
       <div className="row">
         <div className="col-12 card shadow">
           <div className="card-header">
@@ -109,28 +113,30 @@ const List = props => {
                 </div>
               </div>
               <div className="col">
-                <div class="card shadow card-stats mb-4 mb-lg-0">
-                  <div class="card-body">
-                    <div class="row">
-                      <div class="col-2 justify-content-center align-content-center">
-                        <div class="icon icon-shape bg-purple text-white rounded-circle shadow">
-                          <i class="ni ni-books"></i>
+                <button className="btn btn-primary p-0" disabled={!data.defect.manual} onClick={() => { setManual(data.defect.manual); viewManualModalInstance.show() }}>
+                  <div class="card shadow card-stats mb-4 mb-lg-0">
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col-2 justify-content-center align-content-center">
+                          <div class="icon icon-shape bg-purple text-white rounded-circle shadow">
+                            <i class="ni ni-books"></i>
+                          </div>
                         </div>
-                      </div>
-                      <div class="col">
-                        <h5 class="card-title text-uppercase text-muted mb-0">Manual</h5>
-                        <span class="h2 font-weight-bold">{data.defect.manual?.name}</span><br/>
+                        <div class="col">
+                          <h5 class="card-title text-uppercase text-muted mb-0">Manual</h5>
+                          <span class="h2 font-weight-bold">{data.defect.manual?.name}</span><br/>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
+                </button>
               </div>
             </div>
             <div className="row mt-5">
               <div className="col">
                 <div className="card">
                   <div className="card-header">
-                    <h4 className="card-title">Description</h4>
+                    <h4 className="card-title">Pilot Description</h4>
                   </div>
                 </div>
                 <div className="card-body">
@@ -142,7 +148,7 @@ const List = props => {
               <div className="col">
                 <div className="card">
                   <div className="card-header">
-                    <h4 className="card-title">Full Description</h4>
+                    <h4 className="card-title">Line Planning Description</h4>
                   </div>
                 </div>
                 <div className="card-body" dangerouslySetInnerHTML={{ __html: data.defect.full_description }}></div>

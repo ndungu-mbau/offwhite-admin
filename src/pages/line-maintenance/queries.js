@@ -58,6 +58,9 @@ query($defect: Udefect!){
     manual{
       id
       name
+      ata_chapter
+      ata_subchapter
+      link
     }
 		status{
 			id
