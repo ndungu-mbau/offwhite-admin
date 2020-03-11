@@ -50,7 +50,7 @@ export default ({ location : { pathname = "/" } = {} }) => {
           </li>
           <li className="nav-item">
             <Link className={`nav-link ${pathname.startsWith("/maintenance") && "active"}`}to="/maintenance">
-              <i className="fas fa-dumpster-fire text-danger"></i> Line Maintenance
+              <i className="fas fa-tools text-dark"></i> Line Maintenance
             </Link>
           </li>
           <li className="nav-item">
