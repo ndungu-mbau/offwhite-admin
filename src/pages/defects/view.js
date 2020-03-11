@@ -128,7 +128,7 @@ const List = props => {
                       </div>
                       <div class="col">
                         <h5 class="card-title text-uppercase text-muted mb-0">Manual</h5>
-                        <span class="h2 font-weight-bold">{data.defect.manual.name}</span><br/>
+                        <span class="h2 font-weight-bold">{data.defect.manual?.name}</span><br/>
                       </div>
                     </div>
                   </div>

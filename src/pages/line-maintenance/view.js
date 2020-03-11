@@ -119,7 +119,7 @@ const List = props => {
                       </div>
                       <div class="col">
                         <h5 class="card-title text-uppercase text-muted mb-0">Manual</h5>
-                        <span class="h2 font-weight-bold">{data.defect.manual.name}</span><br/>
+                        <span class="h2 font-weight-bold">{data.defect.manual?.name}</span><br/>
                       </div>
                     </div>
                   </div>
@@ -149,7 +149,7 @@ const List = props => {
               </div>
             </div>
           </div>
-          {type === "LINE_MAINTENANCE" ? <div className="card-footer">
+          {type === "LINE_MAINTENANCE" || type === "SYSADMIN" ? <div className="card-footer">
             <div className="row d-flex flex-row-reverse">
               <div className="col-3">
                 <button className="btn btn-icon btn-success btn-lg" type="button" onClick={saveUpdate}>

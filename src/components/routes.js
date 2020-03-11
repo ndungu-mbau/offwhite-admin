@@ -9,15 +9,15 @@ export const PrivateRoute = ({ component: Component, ...rest }) => (
   )} />
 )
 
-export const createProtectedRoute = level => props => {
+export const createProtectedRoute = (...levels) => ({ component: Component, ...props }) => {
   const { type } = JSON.parse(localStorage.getItem("user"))
   return (
   <PrivateRoute
     {...props}
-    component={({ component: Component, ...routeProps }) => 
+    component={routeProps => 
       (<Route
         {...routeProps}
-        render={rProps => level === type? <Component {...rProps} /> : <Redirect to="/" />
+        render={rProps => levels.includes(type) ? <Component {...rProps} /> : <Redirect to="/" />
       }
     />)
   }/>)

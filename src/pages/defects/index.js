@@ -7,7 +7,7 @@ import Sidebar from "../../components/sidebar"
 import list from "./list"
 import view from "./view"
 
-const ProtectedRoute = createProtectedRoute("LINE_PLANNING")
+const ProtectedRoute = createProtectedRoute("LINE_PLANNING", "SYSADMIN")
 
 const Index = ({ location }) => {
   return (

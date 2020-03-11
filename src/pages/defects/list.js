@@ -14,7 +14,9 @@ const deleteModalInstance = new DeleteModal()
 
 const List = props => {
   const { history } = props
-  let { loading, data: defectsData, error } = useQuery(DEFECTS_QUERY)
+  let { loading, data: defectsData, error } = useQuery(DEFECTS_QUERY, {
+    fetchPolicy: "network-only"
+  })
   const { loading: dataloading, data: dataQuery } = useQuery(DATA_QUERY)
   const [remove, setRemove] = useState({})
   const [edit, setEdit] = useState({})
@@ -78,7 +80,7 @@ const List = props => {
                 options={{
                   deleteable: true,
                   editable: true,
-                  viewable: type === "LINE_PLANNING"
+                  viewable: type === "LINE_PLANNING" || type === "SYSADMIN"
                 }}
                 delete={defect => { setRemove(defect); deleteModalInstance.show() }}
                 edit={defect => { setEdit(defect); editModalInstance.show() }}
