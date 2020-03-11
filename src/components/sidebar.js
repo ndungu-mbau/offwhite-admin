@@ -2,6 +2,13 @@ import React from "react"
 import { Link } from "react-router-dom"
 
 export default ({ location : { pathname = "/" } = {} }) => {
+  const { canView } = {
+    get canView(){
+      const { type  } = JSON.parse(localStorage.getItem("user"))
+      return type === "SYSADMIN"
+    }
+  }
+
   return (
     <nav className="navbar navbar-vertical fixed-left navbar-expand-lg navbar-light bg-white" id="sidenav-main">
     <div className="container-fluid">
@@ -38,7 +45,7 @@ export default ({ location : { pathname = "/" } = {} }) => {
           </div>
         </form>
         <ul className="navbar-nav">
-        <li className="nav-item">
+          <li className="nav-item">
             <Link className={`nav-link ${pathname === "/" && "active"}`} to="/">
               <i className="ni ni-tv-2 text-primary"></i> Dashboard
             </Link>
@@ -53,6 +60,7 @@ export default ({ location : { pathname = "/" } = {} }) => {
               <i className="fas fa-tools text-dark"></i> Line Maintenance
             </Link>
           </li>
+          { canView && <>
           <li className="nav-item">
             <Link className={`nav-link ${pathname.startsWith("/users") && "active"}`} to="/users">
               <i className="ni ni-single-02 text-yellow"></i> Users
@@ -78,6 +86,7 @@ export default ({ location : { pathname = "/" } = {} }) => {
               <i className="fas fa-cogs text-success"></i> Rotables
             </Link>
           </li>
+          </>}
         </ul>
       </div>
     </div>
