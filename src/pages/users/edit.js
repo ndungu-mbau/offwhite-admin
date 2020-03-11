@@ -98,7 +98,7 @@ export default class Modal extends Component{
                         })}
                       >
                         <option value="">Select Role</option>
-                        {["SYSADMIN", "OHS", "HOD", "TECHNICIAN"].map(role => (
+                        {["PILOT","HOD","LINE_PLANNING","LINE_MAINTENANCE"].map(role => (
                           <option key={role} value={role}>{role}</option>
                         ))}
                       </select>
